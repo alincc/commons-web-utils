@@ -50,7 +50,18 @@ public class UserUtilsTest {
         
         UserUtils.getClientIp();
     }
-    
+
+    @Test(expected = SecurityException.class)
+    public void whenIpIsLocalhostThenThrowSecurityException() {
+        MockHttpServletRequest request = new MockHttpServletRequest("GET", "/v1/id1");
+        String remoteAddr = "127.0.0.1";
+        request.setRemoteAddr(remoteAddr);
+        ServletRequestAttributes attributes = new ServletRequestAttributes(request);
+        RequestContextHolder.setRequestAttributes(attributes);
+        
+        UserUtils.getClientIp();
+    }
+
     @Test
     public void whenTokenIsInHeaderThenUseIt() {
         MockHttpServletRequest request = new MockHttpServletRequest("GET", "/v1/id1");
