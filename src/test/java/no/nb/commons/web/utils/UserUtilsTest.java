@@ -26,7 +26,7 @@ public class UserUtilsTest {
         ServletRequestAttributes attributes = new ServletRequestAttributes(request);
         RequestContextHolder.setRequestAttributes(attributes);
         
-        assertEquals(ip, UserUtils.getClientIp());
+        assertEquals(ip, UserUtils.getClientIp(request));
     }
 
     @Test
@@ -37,7 +37,7 @@ public class UserUtilsTest {
         ServletRequestAttributes attributes = new ServletRequestAttributes(request);
         RequestContextHolder.setRequestAttributes(attributes);
         
-        assertEquals(remoteAddr, UserUtils.getClientIp());
+        assertEquals(remoteAddr, UserUtils.getClientIp(request));
     }
 
     @Test
@@ -50,7 +50,7 @@ public class UserUtilsTest {
         ServletRequestAttributes attributes = new ServletRequestAttributes(request);
         RequestContextHolder.setRequestAttributes(attributes);
         
-        assertEquals(remoteAddr, UserUtils.getClientIp());
+        assertEquals(remoteAddr, UserUtils.getClientIp(request));
     }
 
     @Test(expected = SecurityException.class)
@@ -61,7 +61,7 @@ public class UserUtilsTest {
         ServletRequestAttributes attributes = new ServletRequestAttributes(request);
         RequestContextHolder.setRequestAttributes(attributes);
         
-        UserUtils.getClientIp();
+        UserUtils.getClientIp(request);
     }
 
     @Test(expected = SecurityException.class)
@@ -72,7 +72,7 @@ public class UserUtilsTest {
         ServletRequestAttributes attributes = new ServletRequestAttributes(request);
         RequestContextHolder.setRequestAttributes(attributes);
         
-        UserUtils.getClientIp();
+        UserUtils.getClientIp(request);
     }
 
     @Test
@@ -83,7 +83,7 @@ public class UserUtilsTest {
         ServletRequestAttributes attributes = new ServletRequestAttributes(request);
         RequestContextHolder.setRequestAttributes(attributes);
         
-        assertEquals(amsso, UserUtils.getSsoToken());
+        assertEquals(amsso, UserUtils.getSsoToken(request));
 
     }
 
@@ -96,7 +96,7 @@ public class UserUtilsTest {
         ServletRequestAttributes attributes = new ServletRequestAttributes(request);
         RequestContextHolder.setRequestAttributes(attributes);
         
-        assertEquals(amssoValue, UserUtils.getSsoToken());
+        assertEquals(amssoValue, UserUtils.getSsoToken(request));
 
     }
 
@@ -106,7 +106,7 @@ public class UserUtilsTest {
         ServletRequestAttributes attributes = new ServletRequestAttributes(request);
         RequestContextHolder.setRequestAttributes(attributes);
         
-        assertNull(UserUtils.getSsoToken());
+        assertNull(UserUtils.getSsoToken(request));
 
     }
 

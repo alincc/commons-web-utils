@@ -33,7 +33,8 @@ public class SsoFeignInterceptorTest {
         ServletRequestAttributes attributes = new ServletRequestAttributes(request);
         RequestContextHolder.setRequestAttributes(attributes);
         
-        SsoFeignInterceptor interceptor = new SsoFeignInterceptor();
+        
+        SsoFeignInterceptor interceptor = new SsoFeignInterceptor(request);
         RequestTemplate template = new RequestTemplate();
         interceptor.apply(template);
         

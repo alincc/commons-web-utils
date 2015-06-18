@@ -4,8 +4,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.validator.routines.InetAddressValidator;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.util.WebUtils;
 
 /**
@@ -21,9 +19,7 @@ public class UserUtils {
         super();
     }
     
-    public static String getClientIp() {
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder
-                .currentRequestAttributes()).getRequest();
+    public static String getClientIp(HttpServletRequest request) {
 
         String clientIp = request.getHeader(UserUtils.REAL_IP_HEADER);
         
@@ -36,9 +32,7 @@ public class UserUtils {
         return clientIp;
     }
 
-    public static String getSsoToken() {
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder
-                .currentRequestAttributes()).getRequest();
+    public static String getSsoToken(HttpServletRequest request) {
 
         String amsso = request.getHeader(UserUtils.SSO_HEADER);
 
