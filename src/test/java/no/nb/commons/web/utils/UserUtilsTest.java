@@ -100,4 +100,14 @@ public class UserUtilsTest {
 
     }
 
+    @Test
+    public void whenTokenIsMissingThenReturnNull() {
+        MockHttpServletRequest request = new MockHttpServletRequest("GET", "/v1/id1");
+        ServletRequestAttributes attributes = new ServletRequestAttributes(request);
+        RequestContextHolder.setRequestAttributes(attributes);
+        
+        assertNull(UserUtils.getSsoToken());
+
+    }
+
 }

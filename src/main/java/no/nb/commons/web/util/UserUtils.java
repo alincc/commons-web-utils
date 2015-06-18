@@ -48,10 +48,11 @@ public class UserUtils {
             Cookie amssoCookie = WebUtils.getCookie(request, UserUtils.SSO_HEADER);
             if (amssoCookie != null) {
                 return amssoCookie.getValue();
+            } else {
+                return null;
             }
         }
-
-        return null;
+        
     }
     
 
