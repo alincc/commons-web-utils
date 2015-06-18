@@ -40,6 +40,19 @@ public class UserUtilsTest {
         assertEquals(remoteAddr, UserUtils.getClientIp());
     }
 
+    @Test
+    public void whenIpFromFrontendIsEmptyThenUseRemoteAddress() {
+        MockHttpServletRequest request = new MockHttpServletRequest("GET", "/v1/id1");
+        String ip = "";
+        request.addHeader(UserUtils.REAL_IP_HEADER, ip);
+        String remoteAddr = "123.45.123.123";
+        request.setRemoteAddr(remoteAddr);
+        ServletRequestAttributes attributes = new ServletRequestAttributes(request);
+        RequestContextHolder.setRequestAttributes(attributes);
+        
+        assertEquals(remoteAddr, UserUtils.getClientIp());
+    }
+
     @Test(expected = SecurityException.class)
     public void whenIp6ThenThrowSecurityException() {
         MockHttpServletRequest request = new MockHttpServletRequest("GET", "/v1/id1");
