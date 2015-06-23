@@ -23,7 +23,7 @@ public class XForwardedParamsFeignInterceptor implements RequestInterceptor {
 
     private void setHeader(RequestTemplate template, String headerName) {
         Collection<String> params = template.queries().get(headerName);
-        if (params != null && params.size() > 0) {
+        if (params != null && !params.isEmpty()) {
             template.header(headerName,  params.iterator().next());    
         }
 
