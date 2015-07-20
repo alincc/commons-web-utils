@@ -1,8 +1,6 @@
 package no.nb.commons.web.xforwarded.feign;
 
 import static org.junit.Assert.assertEquals;
-import no.nb.commons.web.sso.feign.SsoFeignInterceptor;
-import no.nb.commons.web.util.UserUtils;
 
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -10,12 +8,8 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import feign.RequestTemplate;
+import no.nb.commons.web.util.UserUtils;
 
-/**
- * 
- * @author ronnymikalsen
- *
- */
 public class XForwardedFeignInterceptorTest {
 
     @Test
